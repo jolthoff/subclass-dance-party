@@ -49,7 +49,7 @@ MakeDancer.prototype.checkCollision = function() {
   for(var key in window.distances){
     if(this.name != key){
       console.log(this.name, key)
-      if(this.distance(this.x, this.y, window.distances[key].x, window.distances[key].y) < 200){
+      if(this.distance(this.x, this.y, window.distances[key].x, window.distances[key].y) < 80){
         return true;
       }
     }

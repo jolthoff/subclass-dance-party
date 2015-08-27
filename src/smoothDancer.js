@@ -1,10 +1,10 @@
 var MakeSmoothDancer = function(top, left, timeBetweenSteps) {
-  this.$node = $('<span class="smooth-dancer"></span>');
+  
   MakeDancer.call(this, top, left, timeBetweenSteps)
-
+  this.$node = $('<span class="BOO"></span>');
   this.rightWall = false;
   this.bottomWall = false;
-  this.step('shimmy', timeBetweenSteps)
+  this.step('shimmy', timeBetweenSteps / 4)
 };
 
 MakeSmoothDancer.prototype = Object.create(MakeDancer.prototype);
@@ -13,29 +13,29 @@ MakeSmoothDancer.prototype.constructor = MakeSmoothDancer;
 MakeSmoothDancer.prototype.shimmy = function() {
   var context = this;
   if (!context.rightWall) {
-    context.x = context.x + 40;
-    context.$node.animate({'left': context.x + 'px'}, {queue: false, duration: 500}) 
+    context.x = context.x + 30;
+    context.$node.animate({'left': context.x + 'px'}, {queue: false, duration: 700}) 
     if (context.x > window.$('body').width()) {
       context.rightWall = true;
     }
   } 
   if (context.rightWall) {
-    context.x = context.x - 40;
-    context.$node.animate({'left': context.x + 'px'}, {queue: false, duration: 500})
+    context.x = context.x - 30;
+    context.$node.animate({'left': context.x + 'px'}, {queue: false, duration: 700})
     if (context.x < 0) {
       context.rightWall = false;
     }
   }
   if (!context.bottomWall) {
-    context.y = context.y + 40;
-    context.$node.animate({'top': context.y + 'px'}, {queue: false, duration: 500})
+    context.y = context.y + 30;
+    context.$node.animate({'top': context.y + 'px'}, {queue: false, duration: 700})
     if (context.y > window.$('body').height()) {
       context.bottomWall = true;
     }
   }
   if (context.bottomWall) {
-    context.y = context.y - 40;
-    context.$node.animate({'top': context.y + 'px'}, {queue: false, duration: 500})
+    context.y = context.y - 30;
+    context.$node.animate({'top': context.y + 'px'}, {queue: false, duration: 700})
     if (context.y < 0) {
       context.bottomWall = false;
     }

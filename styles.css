@@ -3,7 +3,11 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url('images/3487644-4650098300-super.jpg');
+  background-repeat: no-repeat;
+  background-position: 0 center;
+  background-attachment: fixed;
+  background-size: 100vw 100vh;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -21,18 +25,32 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-
-  border:10px solid red;
-  border-radius:10px;
+  background-image: url('images/tumblr_msu2iw8okg1scncwdo1_500.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 5.5em;
+  width: 5em;
+  /*border:10px solid red;
+  border-radius:10px;*/
   position:absolute;
-  transition: border .5s, transform .5s;
 }
 
-.dancer.blue {
+.BOO {
+  background-image: url('images/100px-Paper_Mario_Sticker_Star_Boo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 5.5em;
+  width: 5.5em;
+  /*border:10px solid red;
+  border-radius:10px;*/
+  position:absolute;
+}
+
+.blue {
   border: 10px solid blue;
 }
 
-.dancer.green {
+.green {
   border: 10px solid green;
 }
 
