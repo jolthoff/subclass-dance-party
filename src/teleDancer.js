@@ -2,13 +2,13 @@ var TeleDancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span class="tele-dancer"></span>');
   MakeDancer.call(this, top, left, timeBetweenSteps);
 
-  this.step('bounce', timeBetweenSteps);
+  this.step('teleport', timeBetweenSteps);
 
 
 };
 
 TeleDancer.prototype = Object.create(MakeDancer.prototype);
-TeleDancer.prototype.constructor = BouncyDancer;
+TeleDancer.prototype.constructor = TeleDancer;
 
 TeleDancer.prototype.teleport = function() {
   // Use css top and left properties to position our <span> tag

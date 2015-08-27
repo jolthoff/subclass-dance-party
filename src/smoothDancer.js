@@ -1,10 +1,9 @@
 var MakeSmoothDancer = function(top, left, timeBetweenSteps) {
+  this.$node = $('<span class="smooth-dancer"></span>');
   MakeDancer.call(this, top, left, timeBetweenSteps)
 
   this.rightWall = false;
   this.bottomWall = false;
-  this.y = top;
-  this.x = left;
   this.step('shimmy', timeBetweenSteps)
 };
 
@@ -36,7 +35,7 @@ MakeSmoothDancer.prototype.shimmy = function() {
   }
   if (context.bottomWall) {
     context.y = context.y - 40;
-    context.$node.animate({'top': context.y + 'px'},{queue: false, duration: 500})
+    context.$node.animate({'top': context.y + 'px'}, {queue: false, duration: 500})
     if (context.y < 0) {
       context.bottomWall = false;
     }
