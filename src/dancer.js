@@ -4,9 +4,9 @@ var MakeDancer = function(top, left, timeBetweenSteps){
 
   // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
-
+  this.vertical = top;
+  this.horizontal = left;
   this.step(undefined, timeBetweenSteps);
-
 
 
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
@@ -20,7 +20,7 @@ MakeDancer.prototype.step = function(callback, timeBetweenSteps) {
   // it just schedules the next step
   var context = this;
   setInterval(function() {
-    if (callback) {
+    if (callback && !context.hasOwnProperty(callback)) {
       return context.$node[callback]();
     } else {
       return context.step;
@@ -28,13 +28,15 @@ MakeDancer.prototype.step = function(callback, timeBetweenSteps) {
   }, timeBetweenSteps);
 };
 
-MakeDancer.prototype.setPosition = function(top, left) {
+MakeDancer.prototype.setPosition = function() {
   // Use css top and left properties to position our <span> tag
   // where it belongs on the page. See http://api.jquery.com/css/
-  //
+  this.vertical = window.$("body").height() * Math.random();
+  this.horizontal = window.$("body").width() * Math.random();
+
   var styleSettings = {
-    top: top,
-    left: left
+    top: this.vertical,
+    left: this.horizontal
   };
   this.$node.css(styleSettings);
 };
