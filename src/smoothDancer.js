@@ -40,6 +40,10 @@ MakeSmoothDancer.prototype.shimmy = function() {
       context.bottomWall = false;
     }
   }
+  if (context.checkCollision()) {
+    context.rightWall = !context.rightWall;
+    context.bottomWall = !context.bottomWall;
+  }
 
 };
 
