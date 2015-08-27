@@ -14,17 +14,16 @@ describe("blinkyDancer", function() {
   });
 
   it("should have a step function that makes its node blink", function() {
-    debugger
     sinon.spy(blinkyDancer.$node, 'toggle');
-    blinkyDancer.step();
+    blinkyDancer.steps('toggle', timeBetweenSteps);
     expect(blinkyDancer.$node.toggle.called).to.be.true;
   });
 
   describe("dance", function(){
     it("should call step at least once per second", function(){
       sinon.spy(blinkyDancer, "step");
+
       expect(blinkyDancer.step.callCount).to.be.equal(0);
-    blinkyDancer = new MakeBlinkyDancer(10, 20, timeBetweenSteps);
       clock.tick(timeBetweenSteps);
 
       expect(blinkyDancer.step.callCount).to.be.equal(1);

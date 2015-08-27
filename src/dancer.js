@@ -20,19 +20,21 @@ MakeDancer.prototype.step = function(callback, timeBetweenSteps) {
   // it just schedules the next step
   var context = this;
   setInterval(function() {
-    if (callback && !context.hasOwnProperty(callback)) {
+    if (callback && !context[callback]) {
       return context.$node[callback]();
+    } else if (callback && context[callback]) {
+      return context[callback]();
     } else {
       return context.step;
     }
   }, timeBetweenSteps);
 };
 
-MakeDancer.prototype.setPosition = function() {
+MakeDancer.prototype.setPosition = function(top, left) {
   // Use css top and left properties to position our <span> tag
   // where it belongs on the page. See http://api.jquery.com/css/
-  this.vertical = window.$("body").height() * Math.random();
-  this.horizontal = window.$("body").width() * Math.random();
+  this.vertical = top;
+  this.horizontal = left;
 
   var styleSettings = {
     top: this.vertical,
