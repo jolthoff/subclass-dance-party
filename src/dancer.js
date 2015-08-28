@@ -56,8 +56,12 @@ MakeDancer.prototype.setPosition = function(top, left) {
 MakeDancer.prototype.checkCollision = function() {
   for(var key in window.distances){
     if(this.name != key){
-      if(this.distance(this.x, this.y, window.distances[key].x, window.distances[key].y) < 80){
-        return key.charAt() === 'b' ? this.die() : true;
+      if(this.distance(this.x, this.y, window.distances[key].x, window.distances[key].y) < 60){
+        if(key.charAt(0) === 'b') {
+          this.die();
+        } else {
+          return true;
+        }
       }
     }
   } 
@@ -66,8 +70,12 @@ MakeDancer.prototype.checkCollision = function() {
 MakeDancer.prototype.die = function() {
   var context = this.$node;
 
-  context.animate({'top': this.y - 100 + 'px', 'transform': 'scaleY(-1)'}, 500);
-  context.remove();
+  context.css({'transform': 'scale(-5)'});
+  context.css({'opacity': '0'})
+  setTimeout(function() {
+    context.remove();
+  }, 1200)
+  
 }
 
 MakeDancer.prototype.distance = function(x1, y1, x2, y2) {

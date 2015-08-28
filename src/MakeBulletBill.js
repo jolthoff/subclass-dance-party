@@ -8,7 +8,7 @@ var MakeBulletBill = function(top, left, timeBetweenSteps) {
     this.$node.css(this.flipImage());
   }
 
-  this.step('shoot', timeBetweenSteps);
+  this.step('shoot', 40);
   this.step('killSelf', 6000);
   this.setPosition(this.y, this.x);
 }
@@ -23,10 +23,10 @@ MakeBulletBill.prototype.shoot = function() {
   var fromLeft;
   if(context.fromLeft){
     context.x = context.x + 30;
-    context.$node.animate({'left': context.x + 'px'}, {queue: false, duration: 700})
+    context.$node.css({'left': context.x + 'px'})
   } else {
     context.x = context.x - 30;
-    context.$node.animate({'left': context.x + 'px'}, {queue: false, duration: 700})
+    context.$node.css({'left': context.x + 'px'})
   }
 
 };
