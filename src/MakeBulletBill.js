@@ -1,7 +1,7 @@
 var MakeBulletBill = function(top, left, timeBetweenSteps) {
   MakeDancer.call(this, top, left, timeBetweenSteps);
   this.$node = $('<span class="bullet-bill"></span>');
-
+  //this.name = 'b' + window.dancers.length;
   this.fromLeft = false;
   if (this.x < 0) {
     this.fromLeft = true;
@@ -11,8 +11,9 @@ var MakeBulletBill = function(top, left, timeBetweenSteps) {
   this.step('shoot', timeBetweenSteps);
   this.step('killSelf', 6000);
   this.setPosition(this.y, this.x);
-
 }
+
+
 
 MakeBulletBill.prototype = Object.create(MakeDancer.prototype);
 MakeBulletBill.prototype.constructor = MakeBulletBill;

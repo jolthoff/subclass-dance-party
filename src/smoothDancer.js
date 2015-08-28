@@ -4,6 +4,7 @@ var MakeSmoothDancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span class="BOO"></span>');
   this.rightWall = false;
   this.bottomWall = false;
+  this.Yrelevance = true;
   this.step('shimmy', timeBetweenSteps / 4)
 };
 
@@ -28,18 +29,20 @@ MakeSmoothDancer.prototype.shimmy = function() {
       context.rightWall = false;
     }
   }
-  if (!context.bottomWall) {
-    context.y = context.y + 30;
-    context.$node.animate({'top': context.y + 'px'}, {queue: false, duration: 700})
-    if (context.y > window.$('body').height()) {
-      context.bottomWall = true;
+  if(context.Yrelevance) {
+    if (!context.bottomWall) {
+      context.y = context.y + 30;
+      context.$node.animate({'top': context.y + 'px'}, {queue: false, duration: 700})
+      if (context.y > window.$('body').height()) {
+        context.bottomWall = true;
+      }
     }
-  }
-  if (context.bottomWall) {
-    context.y = context.y - 30;
-    context.$node.animate({'top': context.y + 'px'}, {queue: false, duration: 700})
-    if (context.y < 0) {
-      context.bottomWall = false;
+    if (context.bottomWall) {
+      context.y = context.y - 30;
+      context.$node.animate({'top': context.y + 'px'}, {queue: false, duration: 700})
+      if (context.y < 0) {
+        context.bottomWall = false;
+      }
     }
   }
   if (context.checkCollision()) {

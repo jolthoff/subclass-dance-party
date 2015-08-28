@@ -77,3 +77,14 @@ body, a:link, a:visited, a:active{
   position:absolute;
 }
 
+.goomba {
+  background-image: url('images/6ss9ao.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 3.5em;
+  width: 3.5em;
+  /*border:10px solid red;
+  border-radius:10px;*/
+  position:absolute;
+}
+

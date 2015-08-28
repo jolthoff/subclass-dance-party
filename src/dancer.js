@@ -7,15 +7,23 @@ var MakeDancer = function(top, left, timeBetweenSteps){
   this.y = top;
   this.x = left;
   this.step(undefined, timeBetweenSteps);
-  this.name = window.dancers.length;
-  window.distances[this.name] = this;
+  
 
-
+  this.whoAmI();
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
   // this one sets the position to some random default point within the body
   this.setPosition(top, left);
 
 };
+
+MakeDancer.prototype.whoAmI = function() {
+  if(this instanceof MakeBulletBill){
+    this.name = 'b' + window.dancers.length;
+  } else {
+    this.name = window.dancers.length;
+  }
+  window.distances[this.name] = this;
+}
 
 MakeDancer.prototype.step = function(callback, timeBetweenSteps) {
   // the basic dancer doesn't do anything interesting at all on each step,
@@ -49,10 +57,17 @@ MakeDancer.prototype.checkCollision = function() {
   for(var key in window.distances){
     if(this.name != key){
       if(this.distance(this.x, this.y, window.distances[key].x, window.distances[key].y) < 80){
-        return true;
+        return key.charAt() === 'b' ? this.die() : true;
       }
     }
   } 
+}
+
+MakeDancer.prototype.die = function() {
+  var context = this.$node;
+
+  context.animate({'top': this.y - 100 + 'px', 'transform': 'scaleY(-1)'}, 500);
+  context.remove();
 }
 
 MakeDancer.prototype.distance = function(x1, y1, x2, y2) {
