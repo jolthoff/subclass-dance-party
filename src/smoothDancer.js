@@ -14,7 +14,8 @@ MakeSmoothDancer.prototype.shimmy = function() {
   var context = this;
   if (!context.rightWall) {
     context.x = context.x + 30;
-    context.$node.animate({'left': context.x + 'px'}, {queue: false, duration: 700}) 
+    context.$node.animate({'left': context.x + 'px'}, {queue: false, duration: 700})
+    context.flipImage();
     if (context.x > window.$('body').width()) {
       context.rightWall = true;
     }
@@ -22,6 +23,7 @@ MakeSmoothDancer.prototype.shimmy = function() {
   if (context.rightWall) {
     context.x = context.x - 30;
     context.$node.animate({'left': context.x + 'px'}, {queue: false, duration: 700})
+    context.returnImage();
     if (context.x < 0) {
       context.rightWall = false;
     }

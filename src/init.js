@@ -37,5 +37,22 @@ $(document).ready(function(){
 
     window[organizeDancers](window.dancers);
   })
+
+  setInterval(function() {
+    var position = Math.random() * 2;
+    var left = 0;
+    var top = Math.random() * (window.$('body').height() - 200);
+    if (position < 1) {
+      left = -100;
+    } else {
+      left = window.$('body').width() + 30;
+    }
+
+    var bullet = new MakeBulletBill(top, left, 80)
+    window.dancers.push(bullet);
+    $('body').append(bullet.$node);
+  }, (Math.random() + 1000) * 4);
+
+ 
 });
 

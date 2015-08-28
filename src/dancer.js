@@ -48,7 +48,6 @@ MakeDancer.prototype.setPosition = function(top, left) {
 MakeDancer.prototype.checkCollision = function() {
   for(var key in window.distances){
     if(this.name != key){
-      console.log(this.name, key)
       if(this.distance(this.x, this.y, window.distances[key].x, window.distances[key].y) < 80){
         return true;
       }
@@ -58,6 +57,23 @@ MakeDancer.prototype.checkCollision = function() {
 
 MakeDancer.prototype.distance = function(x1, y1, x2, y2) {
   var dist = Math.sqrt(((y2 - y1)*(y2 - y1)) + ((x2 - x1)*(x2 - x1)));
-  console.log(dist);
   return dist;
+}
+
+MakeDancer.prototype.flipImage = function() {
+
+  var styleSettings = {
+        transform: 'scaleX(-1)',
+        filter: 'FlipH'
+      }
+  this.$node.css(styleSettings);
+}
+
+MakeDancer.prototype.returnImage = function() {
+
+  var styleSettings = {
+    transform: 'scaleX(1)',
+    filter: 'FlipH'
+  }
+  this.$node.css(styleSettings);
 }

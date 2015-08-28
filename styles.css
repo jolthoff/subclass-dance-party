@@ -44,6 +44,11 @@ body, a:link, a:visited, a:active{
   /*border:10px solid red;
   border-radius:10px;*/
   position:absolute;
+  transition: transform .5s;
+}
+
+.flipped {
+  transform: rotateY (180deg);
 }
 
 .blue {
@@ -59,5 +64,16 @@ body, a:link, a:visited, a:active{
   height: 8px;
   background-color: red;
   border-radius: 100%;
+}
+
+.bullet-bill {
+  background-image: url('images/tumblr_mbxbldC7G51rsfae9o1_400.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 5.5em;
+  width: 5.5em;
+  /*border:10px solid red;
+  border-radius:10px;*/
+  position:absolute;
 }
 
